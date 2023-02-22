@@ -39,4 +39,9 @@ function selecEstadoMostrarImpuesto(estado)
     }
     
 }
-export { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto};
+
+function mostrarPrecioNeto(uno,precioItems)
+{
+    return uno*precioItems + " es el precio neto";
+}
+export { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto,mostrarPrecioNeto};

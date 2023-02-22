@@ -125,6 +125,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ingresarItems = ingresarItems;
 exports.ingresarPrecioItems = ingresarPrecioItems;
+exports.mostrarPrecioNeto = mostrarPrecioNeto;
 exports.selecEstadoMostrarImpuesto = selecEstadoMostrarImpuesto;
 exports.seleccionarUnEstado = seleccionarUnEstado;
 function ingresarItems(uno) {
@@ -153,6 +154,9 @@ function selecEstadoMostrarImpuesto(estado) {
     return estado + " 4.00%";
   }
 }
+function mostrarPrecioNeto(uno, precioItems) {
+  return uno * precioItems + " es el precio neto";
+}
 },{}],"src/presenter-ventas.js":[function(require,module,exports) {
 "use strict";
 
@@ -166,6 +170,8 @@ var divingresarPrecioItems = document.querySelector("#ingresarPrecioItems-div");
 var estado = document.querySelector("#estados");
 var formSeleccionarEstado = document.querySelector("#seleccionarEstado-form");
 var divSeleccionarEstado = document.querySelector("#seleccionarEstado-div");
+var formPrecioNeto = document.querySelector("#precioNeto-form");
+var divPrecioNeto = document.querySelector("#precioNeto-div");
 formItems.addEventListener("submit", function (event) {
   event.preventDefault();
   divItems.innerHTML = "<p>" + (0, _funciones.ingresarItems)(uno.value) + "</p>";
@@ -181,6 +187,10 @@ formSeleccionarEstado.addEventListener("submit", function (event) {
 formSeleccionarEstado.addEventListener("submit", function (event) {
   event.preventDefault();
   divSeleccionarEstado.innerHTML = "<p>" + (0, _funciones.selecEstadoMostrarImpuesto)(estado.value) + "</p>";
+});
+formPrecioNeto.addEventListener("submit", function (event) {
+  event.preventDefault();
+  divPrecioNeto.innerHTML = "<p>" + (0, _funciones.mostrarPrecioNeto)(uno.value, precioItems.value) + "</p>";
 });
 },{"./funciones":"src/funciones.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

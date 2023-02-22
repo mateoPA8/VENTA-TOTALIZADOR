@@ -1,4 +1,4 @@
-import { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto} from "./funciones";
+import { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto,mostrarPrecioNeto} from "./funciones";
 
 const uno=document.querySelector("#item");
 const formItems=document.querySelector("#ingresarItems-form");
@@ -12,6 +12,9 @@ const divingresarPrecioItems=document.querySelector("#ingresarPrecioItems-div");
 const estado=document.querySelector("#estados");
 const formSeleccionarEstado=document.querySelector("#seleccionarEstado-form");
 const divSeleccionarEstado=document.querySelector("#seleccionarEstado-div");
+
+const formPrecioNeto=document.querySelector("#precioNeto-form");
+const divPrecioNeto=document.querySelector("#precioNeto-div");
 
 formItems.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -34,4 +37,10 @@ formingresarPrecioXItems.addEventListener("submit", (event) => {
     event.preventDefault();
   
     divSeleccionarEstado.innerHTML = "<p>" + selecEstadoMostrarImpuesto(estado.value) + "</p>";
+  });
+
+  formPrecioNeto.addEventListener("submit", (event) => {
+    event.preventDefault();
+  
+    divPrecioNeto.innerHTML = "<p>" + mostrarPrecioNeto(uno.value,precioItems.value) + "</p>";
   });
