@@ -117,51 +117,50 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/ingresarItems.js":[function(require,module,exports) {
+})({"src/funciones.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.ingresarItems = ingresarItems;
+exports.ingresarPrecioItems = ingresarPrecioItems;
+exports.seleccionarUnEstado = seleccionarUnEstado;
 function ingresarItems(uno) {
   return uno;
 }
-var _default = ingresarItems;
-exports.default = _default;
-},{}],"src/ingresarPrecioItems.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
 function ingresarPrecioItems(uno, precioItems) {
   return "cantidad de items: " + uno + "   precio por item: " + precioItems;
 }
-var _default = ingresarPrecioItems;
-exports.default = _default;
+function seleccionarUnEstado(estado) {
+  return estado;
+}
 },{}],"src/presenter-ventas.js":[function(require,module,exports) {
 "use strict";
 
-var _ingresarItems = _interopRequireDefault(require("./ingresarItems"));
-var _ingresarPrecioItems = _interopRequireDefault(require("./ingresarPrecioItems"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _funciones = require("./funciones");
 var uno = document.querySelector("#item");
 var formItems = document.querySelector("#ingresarItems-form");
 var divItems = document.querySelector("#ingresarMostrar-div");
 var precioItems = document.querySelector("#precioItems");
 var formingresarPrecioXItems = document.querySelector("#ingresarPrecioXItems-form");
 var divingresarPrecioItems = document.querySelector("#ingresarPrecioItems-div");
+var estado = document.querySelector("#estados");
+var formSeleccionarEstado = document.querySelector("#seleccionarEstado-form");
+var divSeleccionarEstado = document.querySelector("#seleccionarEstado-div");
 formItems.addEventListener("submit", function (event) {
   event.preventDefault();
-  divItems.innerHTML = "<p>" + (0, _ingresarItems.default)(uno.value) + "</p>";
+  divItems.innerHTML = "<p>" + (0, _funciones.ingresarItems)(uno.value) + "</p>";
 });
 formingresarPrecioXItems.addEventListener("submit", function (event) {
   event.preventDefault();
-  divingresarPrecioItems.innerHTML = "<p>" + (0, _ingresarPrecioItems.default)(uno.value, precioItems.value) + "</p>";
+  divingresarPrecioItems.innerHTML = "<p>" + (0, _funciones.ingresarPrecioItems)(uno.value, precioItems.value) + "</p>";
 });
-},{"./ingresarItems":"src/ingresarItems.js","./ingresarPrecioItems":"src/ingresarPrecioItems.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+formSeleccionarEstado.addEventListener("submit", function (event) {
+  event.preventDefault();
+  divSeleccionarEstado.innerHTML = "<p>" + (0, _funciones.seleccionarUnEstado)(estado.value) + "</p>";
+});
+},{"./funciones":"src/funciones.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
