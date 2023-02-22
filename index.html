@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENTAS</title>
+</head>
+<body>
+    <form id="ingresarItems-form">
+        <label for="item">ingrese la cantidad de items:</label>
+        <input type="text" id="item">
+        <input type="submit" value="Ventas" id="ventas-button"/>
+    </form>
+      <div id="ingresarMostrar-div"></div>
+      <script type="module" src="./src/presenter-ventas.js"></script>
+
+      <form id="ingresarPrecioXItems-form">
+        <label for="precioItems">ingrese el precio por item:</label>
+        <input type="text" id="precioItems">
+        <input type="submit" value="Ventas" id="ventas-button"/>
+    </form>
+      <div id="ingresarPrecioItems-div"></div>
+      <script type="module" src="./src/presenter-ventas.js"></script>
+
+</body>
+</html>
