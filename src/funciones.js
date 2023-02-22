@@ -14,4 +14,29 @@ function seleccionarUnEstado(estado)
     return estado;
     
 }
-export { ingresarItems,ingresarPrecioItems,seleccionarUnEstado};
+
+function selecEstadoMostrarImpuesto(estado)
+{
+    if(estado=="CA")
+    {
+        return estado + " 8.25%";
+    }
+    if(estado=="TX")
+    {
+        return estado + " 6.25%";
+    }
+    if(estado=="UT")
+    {
+        return estado + " 6.65%";
+    }
+    if(estado=="NV")
+    {
+        return estado + " 8.00%";
+    }
+    if(estado=="AL")
+    {
+        return estado + " 4.00%";
+    }
+    
+}
+export { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto};

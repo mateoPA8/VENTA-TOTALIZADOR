@@ -125,6 +125,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ingresarItems = ingresarItems;
 exports.ingresarPrecioItems = ingresarPrecioItems;
+exports.selecEstadoMostrarImpuesto = selecEstadoMostrarImpuesto;
 exports.seleccionarUnEstado = seleccionarUnEstado;
 function ingresarItems(uno) {
   return uno;
@@ -134,6 +135,23 @@ function ingresarPrecioItems(uno, precioItems) {
 }
 function seleccionarUnEstado(estado) {
   return estado;
+}
+function selecEstadoMostrarImpuesto(estado) {
+  if (estado == "CA") {
+    return estado + " 8.25%";
+  }
+  if (estado == "TX") {
+    return estado + " 6.25%";
+  }
+  if (estado == "UT") {
+    return estado + " 6.65%";
+  }
+  if (estado == "NV") {
+    return estado + " 8.00%";
+  }
+  if (estado == "AL") {
+    return estado + " 4.00%";
+  }
 }
 },{}],"src/presenter-ventas.js":[function(require,module,exports) {
 "use strict";
@@ -159,6 +177,10 @@ formingresarPrecioXItems.addEventListener("submit", function (event) {
 formSeleccionarEstado.addEventListener("submit", function (event) {
   event.preventDefault();
   divSeleccionarEstado.innerHTML = "<p>" + (0, _funciones.seleccionarUnEstado)(estado.value) + "</p>";
+});
+formSeleccionarEstado.addEventListener("submit", function (event) {
+  event.preventDefault();
+  divSeleccionarEstado.innerHTML = "<p>" + (0, _funciones.selecEstadoMostrarImpuesto)(estado.value) + "</p>";
 });
 },{"./funciones":"src/funciones.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

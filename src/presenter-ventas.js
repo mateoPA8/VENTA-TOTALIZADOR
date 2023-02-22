@@ -1,4 +1,4 @@
-import { ingresarItems,ingresarPrecioItems,seleccionarUnEstado} from "./funciones";
+import { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto} from "./funciones";
 
 const uno=document.querySelector("#item");
 const formItems=document.querySelector("#ingresarItems-form");
@@ -28,4 +28,10 @@ formingresarPrecioXItems.addEventListener("submit", (event) => {
     event.preventDefault();
   
     divSeleccionarEstado.innerHTML = "<p>" + seleccionarUnEstado(estado.value) + "</p>";
+  });
+
+  formSeleccionarEstado.addEventListener("submit", (event) => {
+    event.preventDefault();
+  
+    divSeleccionarEstado.innerHTML = "<p>" + selecEstadoMostrarImpuesto(estado.value) + "</p>";
   });
