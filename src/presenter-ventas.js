@@ -1,4 +1,4 @@
-import { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto,mostrarPrecioNeto} from "./funciones";
+import { ingresarItems,ingresarPrecioItems,seleccionarUnEstado,selecEstadoMostrarImpuesto,mostrarPrecioNeto,calcularPrecioTotal} from "./funciones";
 
 const uno=document.querySelector("#item");
 const formItems=document.querySelector("#ingresarItems-form");
@@ -43,4 +43,10 @@ formingresarPrecioXItems.addEventListener("submit", (event) => {
     event.preventDefault();
   
     divPrecioNeto.innerHTML = "<p>" + mostrarPrecioNeto(uno.value,precioItems.value) + "</p>";
+  });
+
+  formSeleccionarEstado.addEventListener("submit", (event) => {
+    event.preventDefault();
+  
+    divSeleccionarEstado.innerHTML = "<p>" + calcularPrecioTotal(estado.value,uno.value,precioItems.value) + "</p>";
   });

@@ -123,6 +123,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.calcularPrecioTotal = calcularPrecioTotal;
 exports.ingresarItems = ingresarItems;
 exports.ingresarPrecioItems = ingresarPrecioItems;
 exports.mostrarPrecioNeto = mostrarPrecioNeto;
@@ -156,6 +157,93 @@ function selecEstadoMostrarImpuesto(estado) {
 }
 function mostrarPrecioNeto(uno, precioItems) {
   return uno * precioItems + " es el precio neto";
+}
+function calcularPrecioTotal(estado, uno, precioItems) {
+  if (estado == "CA") {
+    if (uno > 1000 && uno < 3000) {
+      return uno * precioItems + uno * precioItems * 0.0825 - uno * precioItems * 0.03;
+    }
+    if (uno > 3000 && uno < 7000) {
+      return uno * precioItems + uno * precioItems * 0.0825 - uno * precioItems * 0.05;
+    }
+    if (uno > 7000 && uno < 10000) {
+      return uno * precioItems + uno * precioItems * 0.0825 - uno * precioItems * 0.07;
+    }
+    if (uno > 10000 && uno < 30000) {
+      return uno * precioItems + uno * precioItems * 0.0825 - uno * precioItems * 0.10;
+    }
+    if (uno > 30000) {
+      return uno * precioItems + uno * precioItems * 0.0825 - uno * precioItems * 0.15;
+    }
+  }
+  if (estado == "TX") {
+    if (uno > 1000 && uno < 3000) {
+      return uno * precioItems + uno * precioItems * 0.0625 - uno * precioItems * 0.03;
+    }
+    if (uno > 3000 && uno < 7000) {
+      return uno * precioItems + uno * precioItems * 0.0625 - uno * precioItems * 0.05;
+    }
+    if (uno > 7000 && uno < 10000) {
+      return uno * precioItems + uno * precioItems * 0.0625 - uno * precioItems * 0.07;
+    }
+    if (uno > 10000 && uno < 30000) {
+      return uno * precioItems + uno * precioItems * 0.0625 - uno * precioItems * 0.10;
+    }
+    if (uno > 30000) {
+      return uno * precioItems + uno * precioItems * 0.0625 - uno * precioItems * 0.15;
+    }
+  }
+  if (estado == "UT") {
+    if (uno > 1000 && uno < 3000) {
+      return uno * precioItems + uno * precioItems * 0.0665 - uno * precioItems * 0.03;
+    }
+    if (uno > 3000 && uno < 7000) {
+      return uno * precioItems + uno * precioItems * 0.0665 - uno * precioItems * 0.05;
+    }
+    if (uno > 7000 && uno < 10000) {
+      return uno * precioItems + uno * precioItems * 0.0665 - uno * precioItems * 0.07;
+    }
+    if (uno > 10000 && uno < 30000) {
+      return uno * precioItems + uno * precioItems * 0.0665 - uno * precioItems * 0.10;
+    }
+    if (uno > 30000) {
+      return uno * precioItems + uno * precioItems * 0.0665 - uno * precioItems * 0.15;
+    }
+  }
+  if (estado == "NV") {
+    if (uno > 1000 && uno < 3000) {
+      return uno * precioItems + uno * precioItems * 0.08 - uno * precioItems * 0.03;
+    }
+    if (uno > 3000 && uno < 7000) {
+      return uno * precioItems + uno * precioItems * 0.08 - uno * precioItems * 0.05;
+    }
+    if (uno > 7000 && uno < 10000) {
+      return uno * precioItems + uno * precioItems * 0.08 - uno * precioItems * 0.07;
+    }
+    if (uno > 10000 && uno < 30000) {
+      return uno * precioItems + uno * precioItems * 0.08 - uno * precioItems * 0.10;
+    }
+    if (uno > 30000) {
+      return uno * precioItems + uno * precioItems * 0.08 - uno * precioItems * 0.15;
+    }
+  }
+  if (estado == "AL") {
+    if (uno > 1000 && uno < 3000) {
+      return uno * precioItems + uno * precioItems * 0.04 - uno * precioItems * 0.03;
+    }
+    if (uno > 3000 && uno < 7000) {
+      return uno * precioItems + uno * precioItems * 0.04 - uno * precioItems * 0.05;
+    }
+    if (uno > 7000 && uno < 10000) {
+      return uno * precioItems + uno * precioItems * 0.04 - uno * precioItems * 0.07;
+    }
+    if (uno > 10000 && uno < 30000) {
+      return uno * precioItems + uno * precioItems * 0.04 - uno * precioItems * 0.10;
+    }
+    if (uno > 30000) {
+      return uno * precioItems + uno * precioItems * 0.04 - uno * precioItems * 0.15;
+    }
+  }
 }
 },{}],"src/presenter-ventas.js":[function(require,module,exports) {
 "use strict";
@@ -192,6 +280,10 @@ formPrecioNeto.addEventListener("submit", function (event) {
   event.preventDefault();
   divPrecioNeto.innerHTML = "<p>" + (0, _funciones.mostrarPrecioNeto)(uno.value, precioItems.value) + "</p>";
 });
+formSeleccionarEstado.addEventListener("submit", function (event) {
+  event.preventDefault();
+  divSeleccionarEstado.innerHTML = "<p>" + (0, _funciones.calcularPrecioTotal)(estado.value, uno.value, precioItems.value) + "</p>";
+});
 },{"./funciones":"src/funciones.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -217,7 +309,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58823" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63998" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
